@@ -1,5 +1,5 @@
 The path() function is passed four arguments, two required: route and view,
-and two optional: kwargs, and name. At this point, it’s worth reviewing what these arguments are for.
+and two optional: kwargs, and name. At this point, read the docs to know more
 ####################################################################################################
 to create a virtual environment in a python project
 1- make sure virtualenv module is installed
@@ -33,7 +33,14 @@ To install pre-release versions of packages, use the --pre flag:
 $ python3 -m pip install --pre requests
 
 ####################################################################################################
+information about settings.py
+
+SECRET_KEY is used for deployment on server
+
+set DEBUG to False when you are deploying your project to server  
+
 ####################################################################################################
+DTL is the name for django template language - there are other options like jinja
 ####################################################################################################
 ####################################################################################################
 ####################################################################################################

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>forms</h1>
+<h2>addition form [GET]</h2>
+<form action="add">
+    Enter number 1: <input type="text" name="num1"><br>
+    Enter number 2: <input type="text" name="num2"><br>
+    <input type="submit">
+</form>
+
+<h2>subtraction form [POST]</h2>
+<form action="subtract" method="post"> 
+    {% csrf_token %}
+    Enter number 1: <input type="text" name="num1"><br>
+    Enter number 2: <input type="text" name="num2"><br>
+    <input type="submit">
+</form>
+{% endblock %}
