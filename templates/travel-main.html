@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+this is travel main page
+
+{% for destination in destinations %}
+
+<h3>{{destination.name}}</h3>
+<p>{{destination.distance}}</p>
+<hr>
+{% endfor %}
+{% endblock content %}

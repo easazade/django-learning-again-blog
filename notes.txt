@@ -42,6 +42,28 @@ set DEBUG to False when you are deploying your project to server
 ####################################################################################################
 DTL is the name for django template language - there are other options like jinja
 ####################################################################################################
+to add static files like css, images, js 
+- create a static directory in project directory 
+- in settings.py add 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+
+- the run command 
+$ python manage.py collectstatic
+
+- then to use it in templates you will first load the static tag 
+{% load static %}
+
+- then you can access static files like this
+<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}"> 
+
+-extra : we can load static folders as variables in case we needed to use them in templates like this
+{% static "icons" as  iconsUrl %}
+then we can use them in jinja syntx like in moments like this :
+src="{{iconsUrl}}/{{product.icon}}"
+in above example product is an object fetched from database
 ####################################################################################################
 ####################################################################################################
 ####################################################################################################
