@@ -65,8 +65,39 @@ then we can use them in jinja syntx like in moments like this :
 src="{{iconsUrl}}/{{product.icon}}"
 in above example product is an object fetched from database
 ####################################################################################################
+to create models in your app first :
+
+- install postgresql using brew 
+- install pgadmin using brew 
+- run pip install psycopg2
+- run pip install pillow. this is needed for working with images in django
+- add your databse config in the settings.py like below 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'blog_tut',
+        'USER': 'postgres',
+        'PASSWORD': '1321',
+        'HOST': 'localhost'
+    }
+} 
+
+
+- create your model - don't add id by default your will get an id for models in django
+- before creating and running migrations make sure you have added your app to INSTALLED_APPS or you will get an error
+- run python manage.py makemigrations 
+- run python manage.py migrate 
+
+- if you want to see what sql command will run when we apply the migrations run below command 
+$ python manage.py sqlmigrate app_label 0001 
+0001 is the migration file name 
+
+- if you went to pgadmin and nothing changed try (right click > refresh) the table
 ####################################################################################################
+to create a superuser for your database 
+- python manage.py createsuperuser
 ####################################################################################################
+- to change label of models in admin panel override __str__ method
 ####################################################################################################
 ####################################################################################################
 ####################################################################################################
