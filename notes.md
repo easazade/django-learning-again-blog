@@ -50,6 +50,8 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
+ if you are using images in your model add the MEDIA_ROOT path as well you need to add media path checkout notes for models
+
 - the run command 
 $ python manage.py collectstatic
 
@@ -93,6 +95,41 @@ $ python manage.py sqlmigrate app_label 0001
 0001 is the migration file name 
 
 - if you went to pgadmin and nothing changed try (right click > refresh) the table
+
+- to add your model to django admin panel go to your admin.py of your app and type below code
+
+```python
+from .models import Destination
+# Register your models here.
+admin.site.register(Destination)
+```
+
+if you're using images in your model you need to define the MEDIA_ROOT path for your django project in order to upload files 
+
+```python
+# if you are using images in your model add the MEDIA_ROOT path as well
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+```
+
+- then change your project  urls.py file to something like this 
+
+```python
+from django.contrib import admin
+from django.urls import path, include
+from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+urlpatterns = [
+    path('', views.home),
+    path('polls/', include('polls.urls')),
+    path('travel/', include('travel.urls')),
+    path('admin/', admin.site.urls),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_RROT)
+```
 ####################################################################################################
 to create a superuser for your database 
 - python manage.py createsuperuser
